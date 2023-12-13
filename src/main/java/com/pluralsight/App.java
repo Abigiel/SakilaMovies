@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     static String url = "jdbc:mysql://localhost:3306/sakila";
@@ -28,26 +25,26 @@ public class App
         dataSource.setUsername(user);
         dataSource.setPassword(password);
         Scanner scan = new Scanner(System.in);
-//
-//    System.out.println("Enter the last name of the actor/actress: ");
-//    String lastName = scan.next().toUpperCase();
-//
-//    try (Connection conn = dataSource.getConnection();
-//             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Actor WHERE last_name= ?");
-//             ){
-//
-//            preparedStatement.setString(1,lastName);
-//            try(ResultSet rs = preparedStatement.executeQuery()) {
-//                while (rs.next()) {
-//                    System.out.println("First Name: " + rs.getString("first_name"));
-//                    System.out.println("Last Name: " + rs.getString("last_name"));
-//                    System.out.println("-------------------------------------");
-//
-//                }
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+
+    System.out.println("Enter the last name of the actor/actress: ");
+    String lastName = scan.next().toUpperCase();
+
+    try (Connection conn = dataSource.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Actor WHERE last_name= ?");
+             ){
+
+            preparedStatement.setString(1,lastName);
+            try(ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println("First Name: " + rs.getString("first_name"));
+                    System.out.println("Last Name: " + rs.getString("last_name"));
+                    System.out.println("-------------------------------------");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("To find a movie by actor/actress:" +
                 "\nEnter the first name: ");
@@ -63,7 +60,6 @@ public class App
             try(ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
                     System.out.println("Title: " + rs.getString("film.title"));
-                    //System.out.println("Last Name: " + rs.getString("last_name"));
                     System.out.println("-------------------------------------");
 
                 }
